@@ -2,6 +2,8 @@ package com.example.movielikeproject;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,6 +15,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.movielikeproject.Adapter.MovieRecyclerAdapter;
+import com.example.movielikeproject.DB.MovieContract;
 import com.example.movielikeproject.DB.MovieFacade;
 import com.example.movielikeproject.Model.Movie;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -58,6 +61,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        //SearchView
+        SearchView searchView = (SearchView) findViewById(R.id.Search_view);
+        searchView.setIconifiedByDefault(false);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) { //완료누르면
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {//변경될때마다
+                // 새로운 쿼리의 결과 뿌리기
+                mMovieList = mMovieFacade.getMovieList(
+                        MovieContract.MovieEntry.COLUMN_NAME_MOVIENAME + " LIKE '%" + newText + "%'",//조건
+                        null,
+                        null,
+                        null,
+                        null
+                );
+                mAdapter.swap(mMovieList);
+                return true;
+            }
+        });
+
         mMovieList = new ArrayList<Movie>();
         mMovieFacade = new MovieFacade(this);
 
@@ -81,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
         EventBus.getDefault().unregister(this);
     }
 
+    // 삭제 버튼 클릭
     @Subscribe
     public void onItemDelClickEvent(final MovieRecyclerAdapter.ItemDelClickEvent event){
         AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
