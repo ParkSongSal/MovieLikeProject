@@ -52,14 +52,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Movie movie = new Movie("변호인","양우석","드라마,실화","송강호, 임시완 등","실화라 그런지 더 감명깊게 봤네요.","2021-12-06","2021-12-06");
         mMovieList = new ArrayList<Movie>();
         mMovieFacade = new MovieFacade(this);
 
-        // dummyData
-        //mMovieList.add(movie);
-        //movie = new Movie("추격","나홍진","범죄, 스릴러","김윤석, 하정우","정말 긴장감이 장난 아니네요.","2021-12-07","2021-12-07");
-        //mMovieList.add(movie);
         // 데이터
         mMovieList = mMovieFacade.getMovieList();
         // 어댑터

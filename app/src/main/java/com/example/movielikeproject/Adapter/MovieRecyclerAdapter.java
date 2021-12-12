@@ -49,8 +49,11 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
 
 
         // 화면에 뿌리기
-        holder.titleTextView.setText(movie.getMovieName());
-        holder.contentTextView.setText(movie.getActor());
+        holder.movieNameTextView.setText(movie.getMovieName());
+        holder.directorTextView.setText(movie.getDirector() + " /");
+        holder.actorTextView.setText(movie.getActor());
+        holder.genreTextView.setText(movie.getGenre());
+        holder.reviewTextView.setText(movie.getReview());
         holder.dateTextView.setText(movie.getMovieDate());
 
 
@@ -63,32 +66,35 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView titleTextView;
+        TextView movieNameTextView;
+        TextView directorTextView;
+        TextView actorTextView;
+        TextView genreTextView;
+
         TextView dateTextView;
-        TextView contentTextView;
-        ImageView imageView;
-        //ImageButton delBtn;
+        TextView reviewTextView;
 
         public ViewHolder(View itemView) {
             super(itemView);
             // 레이아웃 들고 오기
-            TextView titleTextView = (TextView) itemView.findViewById(R.id.titletxt);
-            titleTextView.setSelected(true);// 텍스트가 물흐르게 하는효과
-            TextView contentTextView = (TextView) itemView.findViewById(R.id.contentTxt);
+            TextView movieNameTextView = (TextView) itemView.findViewById(R.id.movieNameTxt);
+            TextView directorTextView = (TextView) itemView.findViewById(R.id.directorTxt);
+            TextView actorTextView = (TextView) itemView.findViewById(R.id.actorTxt);
+            TextView genreTextView = (TextView) itemView.findViewById(R.id.genreTxt);
+
+            movieNameTextView.setSelected(true);// 텍스트가 물흐르게 하는효과
+            TextView contentTextView = (TextView) itemView.findViewById(R.id.reviewTxt);
             contentTextView.setEllipsize(TextUtils.TruncateAt.END);
 
             TextView dateTextView = (TextView) itemView.findViewById(R.id.datetxt);
 
-            ImageView imgView = (ImageView) itemView.findViewById(R.id.imgView);
-            //ImageButton delBtn = (ImageButton) itemView.findViewById(R.id.delBtn);
+            this.movieNameTextView = movieNameTextView;
+            this.directorTextView = directorTextView;
+            this.actorTextView = actorTextView;
+            this.genreTextView = genreTextView;
 
-
-            this.titleTextView = titleTextView;
-            this.contentTextView = contentTextView;
+            this.reviewTextView = contentTextView;
             this.dateTextView = dateTextView;
-            this.imageView = imgView;
-            //this.delBtn = delBtn;
-
 
         }
 

@@ -16,12 +16,6 @@
         android:background="@drawable/bg2"
         android:id="@+id/Linear1">
 
-        <ImageView
-            android:transitionName="image"
-            android:layout_height="wrap_content"
-            android:id="@+id/imgView"
-            android:layout_width="match_parent"
-            android:scaleType="centerCrop"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,15 +34,15 @@
 
         </LinearLayout>
 
-    <LinearLayout
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
-            android:id="@+id/titletxt"
+            android:id="@+id/movieNameTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="제목"
+            android:text="영화제목"
             android:textSize="24sp"
             android:layout_weight="1"
             android:paddingLeft="10dp"
@@ -58,11 +52,60 @@
             android:marqueeRepeatLimit="marquee_forever"
             android:singleLine="true"/>
     </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/genreTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="장르"
+                android:textSize="18sp"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="8dp"
+                android:maxLines="5"
+                android:ellipsize="end" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/directorTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="감독"
+                android:textSize="18sp"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="8dp"
+                android:maxLines="5"
+                android:ellipsize="end" />
+
+            <TextView
+                android:id="@+id/actorTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="배우"
+                android:textSize="18sp"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="8dp"
+                android:maxLines="5"
+                android:ellipsize="end" />
+
+        </LinearLayout>
         <TextView
-            android:id="@+id/contentTxt"
+            android:id="@+id/reviewTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="내용"
+            android:text="한줄평"
             android:textSize="18sp"
             android:textColor="#ffffff"
             android:layout_marginLeft="12dp"
