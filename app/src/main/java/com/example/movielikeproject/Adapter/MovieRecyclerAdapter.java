@@ -1,10 +1,12 @@
 package com.example.movielikeproject.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -24,10 +26,26 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
     private List<Movie> mData;
     private final Context mContext;
 
+    public void swap(List<Movie> newMovieList) {
+        mData = newMovieList;
+        notifyDataSetChanged();
+    }
+
     public MovieRecyclerAdapter(Context context, List<Movie> movieList) {
 
         mData = movieList;
         mContext = context;
+    }
+
+    //Event Bus 클래스
+    public static class ItemDelClickEvent {
+        public ItemDelClickEvent(int position, long id) {
+            this.position = position;
+            this.id = id;
+        }
+        public int position;
+        public long id;
+
     }
 
 
@@ -44,7 +62,7 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
 
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         // 데이터
         final Movie movie = mData.get(position);
 
@@ -59,6 +77,13 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
 
         float mRating = Float.parseFloat(movie.getRating());
         holder.ratingBar.setRating(mRating);
+
+        holder.delBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EventBus.getDefault().post(new ItemDelClickEvent(position, movie.getId()));
+            }
+        });
     }
 
     @Override
@@ -76,6 +101,8 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
         TextView dateTextView;
         TextView reviewTextView;
         RatingBar ratingBar;
+
+        ImageButton delBtn;
         public ViewHolder(View itemView) {
             super(itemView);
             // 레이아웃 들고 오기
@@ -90,6 +117,9 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
 
             TextView dateTextView = (TextView) itemView.findViewById(R.id.datetxt);
 
+            ImageButton delBtnView = (ImageButton) itemView.findViewById(R.id.delBtn);
+
+
             this.movieNameTextView = movieNameTextView;
             this.directorTextView = directorTextView;
             this.actorTextView = actorTextView;
@@ -97,6 +127,7 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
             this.ratingBar = ratingBar;
             this.reviewTextView = contentTextView;
             this.dateTextView = dateTextView;
+            this.delBtn = delBtnView;
 
         }
 
