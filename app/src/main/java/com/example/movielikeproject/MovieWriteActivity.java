@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.Toast;
 
 import com.example.movielikeproject.Adapter.MovieRecyclerAdapter;
@@ -25,8 +26,9 @@ public class MovieWriteActivity extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener callbackMethod;
 
     private EditText movieName_edit, director_edit, actor_edit, genre_edit, review_edit, movieDate_edit;
+    private RatingBar movieRating;
     private long mMovieId = -1;
-
+    private float mRating = 0;
     // 현재시간을 msec 으로 구한다.
     long now = System.currentTimeMillis();
     // 현재시간을 date 변수에 저장한다.
@@ -55,8 +57,10 @@ public class MovieWriteActivity extends AppCompatActivity {
         director_edit = findViewById(R.id.directorEdit);
         genre_edit = findViewById(R.id.genreEdit);
         actor_edit = findViewById(R.id.actorEdit);
+        movieRating = findViewById(R.id.movieRatingBar);
         review_edit = findViewById(R.id.reviewEdit);
         movieDate_edit = findViewById(R.id.movieDateEdit);
+
         mMovieFacade = new MovieFacade(this);
 
         initDateListener();
@@ -68,6 +72,13 @@ public class MovieWriteActivity extends AppCompatActivity {
                     dialog.show();
 
                 }
+            }
+        });
+
+        movieRating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                mRating = v;
             }
         });
     }
@@ -199,6 +210,7 @@ public class MovieWriteActivity extends AppCompatActivity {
         String director = director_edit.getText().toString();
         String genre = genre_edit.getText().toString();
         String actor = actor_edit.getText().toString();
+        String rating = String.valueOf(mRating);
         String review = review_edit.getText().toString();
         String movieDate = movieDate_edit.getText().toString();
 
@@ -206,6 +218,7 @@ public class MovieWriteActivity extends AppCompatActivity {
                 director,
                 genre,
                 actor,
+                rating,
                 review,
                 movieDate,
                 movieDate);

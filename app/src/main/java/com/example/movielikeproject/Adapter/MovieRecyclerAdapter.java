@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -56,7 +57,8 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
         holder.reviewTextView.setText(movie.getReview());
         holder.dateTextView.setText(movie.getMovieDate());
 
-
+        float mRating = Float.parseFloat(movie.getRating());
+        holder.ratingBar.setRating(mRating);
     }
 
     @Override
@@ -73,7 +75,7 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
 
         TextView dateTextView;
         TextView reviewTextView;
-
+        RatingBar ratingBar;
         public ViewHolder(View itemView) {
             super(itemView);
             // 레이아웃 들고 오기
@@ -81,7 +83,7 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
             TextView directorTextView = (TextView) itemView.findViewById(R.id.directorTxt);
             TextView actorTextView = (TextView) itemView.findViewById(R.id.actorTxt);
             TextView genreTextView = (TextView) itemView.findViewById(R.id.genreTxt);
-
+            RatingBar ratingBar = (RatingBar) itemView.findViewById(R.id.ratingBar);
             movieNameTextView.setSelected(true);// 텍스트가 물흐르게 하는효과
             TextView contentTextView = (TextView) itemView.findViewById(R.id.reviewTxt);
             contentTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -92,7 +94,7 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
             this.directorTextView = directorTextView;
             this.actorTextView = actorTextView;
             this.genreTextView = genreTextView;
-
+            this.ratingBar = ratingBar;
             this.reviewTextView = contentTextView;
             this.dateTextView = dateTextView;
 

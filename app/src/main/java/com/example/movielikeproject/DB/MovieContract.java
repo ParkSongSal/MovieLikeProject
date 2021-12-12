@@ -28,6 +28,7 @@ public final class MovieContract {
                             "%s TEXT," +
                             "%s TEXT," +
                             "%s TEXT," +
+                            "%s TEXT," +
                             "%s TEXT);",
                     MovieEntry.TABLE_NAME,
                     MovieEntry._ID,
@@ -35,6 +36,7 @@ public final class MovieContract {
                     MovieEntry.COLUMN_NAME_DIRECTOR,
                     MovieEntry.COLUMN_NAME_ACTOR,
                     MovieEntry.COLUMN_NAME_GENRE,
+                    MovieEntry.COLUMN_NAME_RATING,
                     MovieEntry.COLUMN_NAME_REVIEW,
                     MovieEntry.COLUMN_NAME_REGDATE,
                     MovieEntry.COLUMN_NAME_UPDATEDATE);
@@ -48,6 +50,7 @@ public final class MovieContract {
         public static final String COLUMN_NAME_DIRECTOR = "director";
         public static final String COLUMN_NAME_ACTOR = "actor";
         public static final String COLUMN_NAME_GENRE = "genre";
+        public static final String COLUMN_NAME_RATING = "rating";
         public static final String COLUMN_NAME_REVIEW = "review";
         public static final String COLUMN_NAME_REGDATE = "regDate";
         public static final String COLUMN_NAME_UPDATEDATE = "updateDate";

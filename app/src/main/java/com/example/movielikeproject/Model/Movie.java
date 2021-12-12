@@ -22,6 +22,9 @@ public class Movie implements Serializable {
     // 영화 배우
     private String actor;
 
+    // 영화 평점
+    private String rating;
+
     // 영화 관람 한줄평
     private String review;
 
@@ -32,11 +35,12 @@ public class Movie implements Serializable {
     private String updateDate;
 
 
-    public Movie(String movieName, String director, String genre, String actor, String review, String movieDate, String updateDate) {
+    public Movie(String movieName, String director, String genre, String actor, String rating, String review, String movieDate, String updateDate) {
         this.movieName = movieName;
         this.director = director;
         this.genre = genre;
         this.actor = actor;
+        this.rating = rating;
         this.review = review;
         this.movieDate = movieDate;
         this.updateDate = updateDate;
@@ -106,6 +110,14 @@ public class Movie implements Serializable {
         this.updateDate = updateDate;
     }
 
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
+
     @Override
     public String toString() {
         return "Movie{" +
@@ -114,6 +126,7 @@ public class Movie implements Serializable {
                 ", director='" + director + '\'' +
                 ", genre='" + genre + '\'' +
                 ", actor='" + actor + '\'' +
+                ", rating='" + rating + '\'' +
                 ", review='" + review + '\'' +
                 ", movieDate='" + movieDate + '\'' +
                 ", updateDate='" + updateDate + '\'' +

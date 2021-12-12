@@ -34,6 +34,7 @@ public class MovieFacade {
                        String director,
                        String genre,
                        String actor,
+                       String rating,
                        String review,
                        String movieDate,
                        String updateDate) {
@@ -44,6 +45,7 @@ public class MovieFacade {
         values.put(MovieContract.MovieEntry.COLUMN_NAME_DIRECTOR, director);
         values.put(MovieContract.MovieEntry.COLUMN_NAME_GENRE, genre);
         values.put(MovieContract.MovieEntry.COLUMN_NAME_ACTOR, actor);
+        values.put(MovieContract.MovieEntry.COLUMN_NAME_RATING, rating);
         values.put(MovieContract.MovieEntry.COLUMN_NAME_REVIEW, review);
         values.put(MovieContract.MovieEntry.COLUMN_NAME_REGDATE, movieDate);
         values.put(MovieContract.MovieEntry.COLUMN_NAME_UPDATEDATE, updateDate);
@@ -93,6 +95,8 @@ public class MovieFacade {
                         c.getColumnIndexOrThrow(MovieContract.MovieEntry.COLUMN_NAME_GENRE));
                 String actor = c.getString(
                         c.getColumnIndexOrThrow(MovieContract.MovieEntry.COLUMN_NAME_ACTOR));
+                String rating = c.getString(
+                        c.getColumnIndexOrThrow(MovieContract.MovieEntry.COLUMN_NAME_RATING));
                 String review = c.getString(
                         c.getColumnIndexOrThrow(MovieContract.MovieEntry.COLUMN_NAME_REVIEW));
                 String regDate = c.getString(
@@ -101,7 +105,7 @@ public class MovieFacade {
                         c.getColumnIndexOrThrow(MovieContract.MovieEntry.COLUMN_NAME_UPDATEDATE));
                 long id = c.getLong(
                         c.getColumnIndexOrThrow(MovieContract.MovieEntry._ID));
-                Movie movie = new Movie(movieName, director, genre,actor,review,regDate,updateDate);
+                Movie movie = new Movie(movieName, director, genre,actor,rating,review,regDate,updateDate);
                 movie.setId(id);
                 movieArrayList.add(movie);
                 Log.d("LOG", "getMovieList : " + movie);

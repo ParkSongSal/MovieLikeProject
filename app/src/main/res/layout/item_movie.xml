@@ -69,6 +69,20 @@
                 android:layout_marginTop="8dp"
                 android:maxLines="5"
                 android:ellipsize="end" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:isIndicator="false"
+                android:layout_gravity="center"
+                android:max="5"
+                android:numStars="5"
+                android:rating="0"
+                android:stepSize="0.5"
+                style="@style/Widget.AppCompat.RatingBar.Indicator"/>
+
         </LinearLayout>
 
         <LinearLayout
