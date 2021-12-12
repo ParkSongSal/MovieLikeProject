@@ -49,8 +49,8 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
 
 
         // 화면에 뿌리기
-        holder.titleTextView.setText(movie.getTitle());
-        holder.contentTextView.setText(movie.getContents());
+        holder.titleTextView.setText(movie.getMovieName());
+        holder.contentTextView.setText(movie.getActor());
         holder.dateTextView.setText(movie.getMovieDate());
 
 
