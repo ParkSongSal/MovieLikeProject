@@ -12,14 +12,6 @@ public class MovieDBHelper extends SQLiteOpenHelper {
     private static final int DB_VERSION = 1;
     private static final String DB_NAME = "Movie.db";
 
-/* private static final String SQL_CREATE_ENTRIES = String.format("CREATE TABLE %s (%s INTEGER PRIMARY KEY AUTOINCREMENT,%s TEXT, %s TEXT,%s TEXT)",
-                MemoContract.MemoEntry.TABLE_NAME,
-                MemoContract.MemoEntry._ID,
-                MemoContract.MemoEntry.COLUMN_NAME_TITLE,
-                MemoContract.MemoEntry.COLUMN_NAME_CONTENTS,
-                MemoContract.MemoEntry.COLUMN_NAME_DATE);*/
-
-
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + MovieContract.MovieEntry.TABLE_NAME;
 
@@ -40,7 +32,7 @@ public class MovieDBHelper extends SQLiteOpenHelper {
         db.execSQL(MovieContract.SQL_CREATE_MOVIE_TABLE);
     }
 
-
+    // DB 업그레이드시
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(SQL_DELETE_ENTRIES);

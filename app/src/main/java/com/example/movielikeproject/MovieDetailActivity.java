@@ -44,7 +44,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
             float mRating = Float.parseFloat(movie.getRating());
             movieRating.setRating(mRating);
-        }else{
+        }else{  // 데이터 key (id) 값이 안넘어 온 경우 메인으로 이동
             Toast.makeText(getApplicationContext(), "잘못된 접근입니다.", Toast.LENGTH_SHORT).show();
             intent = new Intent(this, MainActivity.class);
             startActivity(intent);
@@ -54,16 +54,19 @@ public class MovieDetailActivity extends AppCompatActivity {
 
     public void onClick(View view) {
         switch (view.getId()){
+            // 취소 버튼 클릭시
             case R.id.cancelBtn:
                 intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 finish();
                 break;
+
+            // 수정 버튼 클릭시
             case R.id.updateGoBtn:
+                // 수정화면으로 이동
                 intent = new Intent(this, MovieUpdateActivity.class);
                 intent.putExtra("id",movie.getId());
                 intent.putExtra("movie",movie);
-
                 startActivity(intent);
                 finish();
                 break;

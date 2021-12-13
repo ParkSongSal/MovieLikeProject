@@ -46,6 +46,7 @@ public class MovieUpdateActivity extends AppCompatActivity {
         movieDate_edit = findViewById(R.id.movieDateEdit);
 
         mMovieFacade = new MovieFacade(this);
+        // 관람일자 DatePicker init
         initDateListener();
         movieDate_edit.setOnFocusChangeListener(new View.OnFocusChangeListener(){
             @Override
@@ -53,7 +54,6 @@ public class MovieUpdateActivity extends AppCompatActivity {
                 if(hasFocus){
                     DatePickerDialog dialog = new DatePickerDialog(MovieUpdateActivity.this, callbackMethod, 2021,12, 7);
                     dialog.show();
-
                 }
             }
         });
@@ -93,6 +93,7 @@ public class MovieUpdateActivity extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
 
+                // month(월) 데이터
                 String mMonth = "";
                 switch (monthOfYear + 1){
                     case 1:
@@ -124,6 +125,7 @@ public class MovieUpdateActivity extends AppCompatActivity {
                         break;
                 }
 
+                // day(일) 데이
                 String mDay = "";
                 switch (dayOfMonth){
                     case 1:
@@ -230,7 +232,7 @@ public class MovieUpdateActivity extends AppCompatActivity {
                 movieDate,
                 movieDate);
         if(newRowId == -1){
-            Toast.makeText(getApplicationContext(), "저장을 실패했습니다.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "수정을 실패했습니다.", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(getApplicationContext(), "수정되었습니다..", Toast.LENGTH_SHORT).show();
             intent = new Intent(this, MainActivity.class);

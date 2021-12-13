@@ -25,6 +25,7 @@ public class MovieFacade {
      * director 영화 감독
      * genre 장르
      * actor 배우
+     * rating 평점
      * review 한줄평
      * movieDate 관람일자
      * updateDate 수정일자
@@ -108,7 +109,6 @@ public class MovieFacade {
                 Movie movie = new Movie(movieName, director, genre,actor,rating,review,regDate,updateDate);
                 movie.setId(id);
                 movieArrayList.add(movie);
-                Log.d("LOG", "getMovieList : " + movie);
             }
             // 커서 닫기
             c.close();
@@ -129,7 +129,7 @@ public class MovieFacade {
     /*
      * 영화 삭제
      * param id 삭제할 영화 id
-     * return 삭제된 행의수
+     * return 삭제된 행의수 수
      * */
     public int delete(long id) {
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
@@ -139,7 +139,10 @@ public class MovieFacade {
         return deleted;
     }
 
-
+    /*
+    * 영화 수정
+    * return 수정된 행의
+    * */
     public int update(long id,
                       String movieName,
                       String director,

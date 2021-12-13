@@ -14,6 +14,7 @@ public final class MovieContract {
     *   director TEXT,
     *   actor TEXT,
     *   genre TEXT,
+    *   rating TEXT,
     *   review TEXT,
     *   regDate TEXT,
     *   updateDate TEXT

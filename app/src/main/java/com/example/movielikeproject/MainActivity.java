@@ -56,8 +56,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, MovieWriteActivity.class);
                 startActivity(intent);
                 finish();
-
-                //startActivityForResult(new Intent(MainActivity.this, MemoActivity.class), REQUEST_CODE_NEW_MEMO);
             }
         });
 
@@ -75,8 +73,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {//변경될때마다
                 // 새로운 쿼리의 결과 뿌리기
+                /*영화제목, 감독, 장르, 배우 중 1가지 입력시 그에 맞는 데이터 조회*/
                 mMovieList = mMovieFacade.getMovieList(
-                        MovieContract.MovieEntry.COLUMN_NAME_MOVIENAME + " LIKE '%" + newText + "%'",//조건
+                        MovieContract.MovieEntry.COLUMN_NAME_MOVIENAME + " LIKE '%" + newText + "%' OR "
+                                + MovieContract.MovieEntry.COLUMN_NAME_DIRECTOR + " LIKE '%" + newText + "%' OR "
+                                + MovieContract.MovieEntry.COLUMN_NAME_GENRE + " LIKE '%" + newText + "%' OR "
+                                + MovieContract.MovieEntry.COLUMN_NAME_ACTOR + " LIKE '%" + newText + "%'",//조건
                         null,
                         null,
                         null,
@@ -110,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         EventBus.getDefault().unregister(this);
     }
 
-    // 삭제 버튼 클릭
+    // itemView 클릭시
     @Subscribe
     public void onItemClickEvent(final MovieRecyclerAdapter.ItemClickEvent event){
         Movie movie = mMovieList.get(event.position);
@@ -135,11 +137,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 })
                 .setNegativeButton("아니요", new DialogInterface.OnClickListener() {
-
                     @Override
-
                     public void onClick(DialogInterface dialog, int which) {
-
                         Toast.makeText(MainActivity.this, "삭제하지 않습니다", Toast.LENGTH_SHORT).show();
                     }
                 }).create().show();
