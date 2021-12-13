@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimary"
+            app:titleTextColor="@color/white"
             app:popupTheme="@style/AppTheme">
 
         </androidx.appcompat.widget.Toolbar>
@@ -162,6 +163,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:isIndicator="false"
+                android:theme="@style/RatingBar"
                 android:max="5"
                 android:numStars="5"
                 android:rating="0"

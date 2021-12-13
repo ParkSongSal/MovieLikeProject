@@ -201,6 +201,8 @@ public class MovieWriteActivity extends AppCompatActivity {
     }
     private void cancel() {
         setResult(RESULT_CANCELED);
+        intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
         finish();
     }
 
