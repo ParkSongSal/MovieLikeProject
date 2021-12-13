@@ -59,10 +59,13 @@ public class MovieDetailActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
                 break;
-            case R.id.saveBtn:
-                //intent = new Intent(this, MainActivity.class);
-                //startActivity(intent);
-                //finish();
+            case R.id.updateGoBtn:
+                intent = new Intent(this, MovieUpdateActivity.class);
+                intent.putExtra("id",movie.getId());
+                intent.putExtra("movie",movie);
+
+                startActivity(intent);
+                finish();
                 break;
             default:
                 break;

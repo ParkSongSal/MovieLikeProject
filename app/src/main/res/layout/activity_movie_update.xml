@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorPrimaryLight"
-    tools:context=".MovieDetailActivity">
+    tools:context=".MovieUpdateActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimary"
+            app:titleTextColor="@color/white"
             app:popupTheme="@style/AppTheme">
 
         </androidx.appcompat.widget.Toolbar>
@@ -45,19 +46,17 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="8dp"
                 android:background="@color/white"
-                android:textColor="@color/black"
-                android:textStyle="bold"
                 android:gravity="center"
                 android:text="영화명"
                 android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/movieNameTxt"
+            <EditText
+                android:id="@+id/movieNameEdit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
+                android:hint="영화명을 입력하세요."
                 android:paddingStart="8dp"
-                android:gravity="center|left"
                 android:text="추격자"
                 android:textColorHint="@color/colorPrimary"
                 android:textSize="20sp" />
@@ -75,20 +74,19 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="8dp"
                 android:background="@color/white"
-                android:textColor="@color/black"
-                android:textStyle="bold"
                 android:gravity="center"
                 android:text="장르"
                 android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/genreTxt"
+            <EditText
+                android:id="@+id/genreEdit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
-                android:gravity="center|left"
+                android:hint="장르를 입력하세요."
                 android:paddingStart="8dp"
                 android:text="범죄, 액션"
+                android:textColorHint="@color/colorPrimary"
                 android:textSize="20sp" />
 
         </LinearLayout>
@@ -105,17 +103,15 @@
                 android:layout_marginEnd="8dp"
                 android:background="@color/white"
                 android:gravity="center"
-                android:textColor="@color/black"
-                android:textStyle="bold"
                 android:text="감독"
                 android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/directorTxt"
+            <EditText
+                android:id="@+id/directorEdit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
-                android:gravity="center|left"
+                android:hint="감독명을 입력하세요."
                 android:paddingStart="8dp"
                 android:text="나홍진"
                 android:textColorHint="@color/colorPrimary"
@@ -133,20 +129,19 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="8dp"
                 android:background="@color/white"
-                android:textColor="@color/black"
-                android:textStyle="bold"
                 android:gravity="center"
                 android:text="배우"
                 android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/actorTxt"
+            <EditText
+                android:id="@+id/actorEdit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
-                android:gravity="center|left"
+                android:hint="배우명을 입력하세요."
                 android:paddingStart="8dp"
                 android:text="김윤석, 하정우"
+                android:textColorHint="@color/colorPrimary"
                 android:textSize="20sp" />
         </LinearLayout>
         <LinearLayout
@@ -161,8 +156,6 @@
                 android:layout_marginEnd="8dp"
                 android:background="@color/white"
                 android:gravity="center"
-                android:textColor="@color/black"
-                android:textStyle="bold"
                 android:text="평점"
                 android:textSize="20sp" />
 
@@ -171,6 +164,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:isIndicator="false"
+                android:theme="@style/RatingBar"
                 android:progressTint="@color/colorAccent"
                 android:progressBackgroundTint="@color/colorGray"
                 android:max="5"
@@ -191,27 +185,28 @@
                 android:layout_marginEnd="8dp"
                 android:background="@color/white"
                 android:gravity="center"
-                android:textColor="@color/black"
-                android:textStyle="bold"
                 android:text="관람일자"
                 android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/movieDateTxt"
+            <EditText
+                android:id="@+id/movieDateEdit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
-                android:gravity="center|left"
-                android:paddingStart="8dp" />
+                android:drawableRight="@drawable/ic_baseline_date_range_24"
+                android:paddingStart="8dp"
+                android:imeOptions="actionNext"
+                android:hint="2021-11-23" />
         </LinearLayout>
-        <TextView
-            android:id="@+id/reviewTxt"
+        <EditText
+            android:id="@+id/reviewEdit"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:background="@color/white"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
+            android:hint="한줄평을 입력하세요."
             android:gravity="top"
             android:padding="8dp"/>
 
@@ -230,13 +225,13 @@
                 android:layout_height="wrap_content"
                 android:text="취소"
                 android:layout_marginEnd="20dp"
+                android:textColor="@color/textColor"
                 android:textSize="18sp"
                 android:onClick="onClick"
-                android:textColor="@color/textColor"
                 android:background="@color/colorSecondaryDark"/>
 
             <Button
-                android:id="@+id/updateGoBtn"
+                android:id="@+id/saveBtn"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"

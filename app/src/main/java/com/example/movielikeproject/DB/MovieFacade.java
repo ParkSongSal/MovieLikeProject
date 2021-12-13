@@ -138,18 +138,29 @@ public class MovieFacade {
                 null);
         return deleted;
     }
-/*
 
-    public int update(long id, String title, String contents, String date, String imageUri) {
+
+    public int update(long id,
+                      String movieName,
+                      String director,
+                      String genre,
+                      String actor,
+                      String rating,
+                      String review,
+                      String movieDate,
+                      String updateDate) {
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(MovieContract.MovieEntry.COLUMN_NAME_TITLE, title);
-        values.put(MovieContract.MovieEntry.COLUMN_NAME_CONTENTS, contents);
-        values.put(MovieContract.MovieEntry.COLUMN_NAME_DATE, date);
-        if(imageUri != null){
-            values.put(MovieContract.MovieEntry.COLUMN_NAME_IMAGE,imageUri);
-        }
+        values.put(MovieContract.MovieEntry.COLUMN_NAME_MOVIENAME, movieName);
+        values.put(MovieContract.MovieEntry.COLUMN_NAME_DIRECTOR, director);
+        values.put(MovieContract.MovieEntry.COLUMN_NAME_GENRE, genre);
+        values.put(MovieContract.MovieEntry.COLUMN_NAME_ACTOR, actor);
+        values.put(MovieContract.MovieEntry.COLUMN_NAME_RATING, rating);
+        values.put(MovieContract.MovieEntry.COLUMN_NAME_REVIEW, review);
+        values.put(MovieContract.MovieEntry.COLUMN_NAME_REGDATE, movieDate);
+        values.put(MovieContract.MovieEntry.COLUMN_NAME_UPDATEDATE, updateDate);
+
         int count = db.update(
                 MovieContract.MovieEntry.TABLE_NAME,
                 values,
@@ -157,6 +168,6 @@ public class MovieFacade {
                 null);
         return count;
     }
-*/
+
 
 }
