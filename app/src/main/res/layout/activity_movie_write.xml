@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorPrimaryLight"
     tools:context=".MovieWriteActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -31,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="15dp"
-        android:background="@color/colorGray"
+        android:background="@color/colorPrimary"
         android:orientation="vertical">
 
         <LinearLayout
@@ -164,6 +165,8 @@
                 android:layout_height="wrap_content"
                 android:isIndicator="false"
                 android:theme="@style/RatingBar"
+                android:progressTint="@color/colorAccent"
+                android:progressBackgroundTint="@color/colorGray"
                 android:max="5"
                 android:numStars="5"
                 android:rating="0"
@@ -209,33 +212,34 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="60dp"
             android:orientation="horizontal"
             android:gravity="center"
+            android:background="@color/colorPrimaryLight"
             android:layout_margin="15dp">
 
 
             <Button
                 android:id="@+id/cancelBtn"
                 android:layout_width="120dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="취소"
                 android:layout_marginEnd="20dp"
+                android:textColor="@color/textColor"
                 android:textSize="18sp"
                 android:onClick="onClick"
-                android:background="@color/colorPrimary"/>
+                android:background="@color/colorSecondaryDark"/>
 
             <Button
                 android:id="@+id/saveBtn"
                 android:layout_width="120dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="저장"
-                android:textColor="@color/white"
-                android:textStyle="bold"
+                android:textColor="@color/textColor"
                 android:onClick="onClick"
                 android:textSize="18sp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
 
         </LinearLayout>
     </LinearLayout>

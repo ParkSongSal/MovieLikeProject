@@ -9,12 +9,13 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorGray">#ACACAC</color>
 
-    <color name="colorPrimary">#424242</color>
-    <color name="colorPrimaryDark">#1b1b1b</color>
-    <color name="colorPrimaryLight">#6d6d6d</color>
-
-    <color name="colorAccent">#FF03DAC5</color>
-    <color name="colorSecondary">#757575</color>
-    <color name="colorSecondaryDark">#494949</color>
-    <color name="colorSecondaryLight">#a4a4a4</color>
+    <color name="colorPrimary">#D1C4E9</color>
+    <color name="colorPrimaryDark">#A094B7</color>
+    <color name="colorPrimaryLight">#FFF7FF</color>
+    <color name="textColor">#000000</color>
+    <color name="textColor2">#272727</color>
+    <color name="colorAccent">#8685ef</color>
+    <color name="colorSecondary">#e1bee7</color>
+    <color name="colorSecondaryDark">#af8eb5</color>
+    <color name="colorSecondaryLight">#fff1ff</color>
 </resources>
