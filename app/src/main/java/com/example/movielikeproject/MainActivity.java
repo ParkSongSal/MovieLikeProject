@@ -112,6 +112,17 @@ public class MainActivity extends AppCompatActivity {
 
     // 삭제 버튼 클릭
     @Subscribe
+    public void onItemClickEvent(final MovieRecyclerAdapter.ItemClickEvent event){
+        Movie movie = mMovieList.get(event.position);
+
+        Intent intent = new Intent(this, MovieDetailActivity.class);
+        intent.putExtra("movie",movie);
+        startActivity(intent);
+        finish();
+    }
+
+    // 삭제 버튼 클릭
+    @Subscribe
     public void onItemDelClickEvent(final MovieRecyclerAdapter.ItemDelClickEvent event){
         AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
         dialog.setTitle("삭제 알림")

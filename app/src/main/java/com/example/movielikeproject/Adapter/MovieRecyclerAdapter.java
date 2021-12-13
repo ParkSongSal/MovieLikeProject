@@ -38,6 +38,17 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
     }
 
     //Event Bus 클래스
+    public static class ItemClickEvent {
+        public ItemClickEvent(int position, long id) {
+            this.position = position;
+            this.id = id;
+        }
+        public int position;
+        public long id;
+
+    }
+
+    //Event Bus 클래스
     public static class ItemDelClickEvent {
         public ItemDelClickEvent(int position, long id) {
             this.position = position;
@@ -82,6 +93,13 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
             @Override
             public void onClick(View view) {
                 EventBus.getDefault().post(new ItemDelClickEvent(position, movie.getId()));
+            }
+        });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               EventBus.getDefault().post(new ItemClickEvent(position, movie.getId()));
             }
         });
     }
